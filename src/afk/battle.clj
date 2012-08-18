@@ -2,4 +2,5 @@
   (:gen-class ))
 
 (defn lose-health [actor amount]
-  (update-in actor [:health ] #(- % amount)))
+  {:pre [(> amount 0)]}
+  (update-in actor [:health ] #(- % (min % amount))))
